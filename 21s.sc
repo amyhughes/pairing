@@ -1,35 +1,28 @@
 type Card = Int
 type Hand = List[Card]
-
 case class Deck(deck: List[Card])
 object Deck {
   val numbers: List[Card] = List.range(2,11)
   val suit: List[Card] = 10 :: 10 :: 10 :: 11 :: numbers
   def initialise : List[Card] = suit ::: suit ::: suit ::: suit
-
   def shuffle(cards : List[Card]) : List[Card] = {
     scala.util.Random.shuffle(cards)
   }
-
   def dealCard(deck: List[Card]) = {
     val dealtCard = deck.head
     val remainingCards = deck.tail
     (dealtCard, remainingCards)
   }
 }
-
 case class Player(name: String, hand: Hand)
 object Player {
-
   def create(name: String): Player = {
     val initialHand: Hand = Nil
     Player(name, initialHand)
   }
-
   def score(player: Player): Int = {
     player.hand.sum
   }
-
   def hasWon(player: Player): Boolean = score(player) match {
     case 21 => true
     case _ => false
