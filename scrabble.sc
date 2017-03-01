@@ -15,6 +15,12 @@ object Rack {
 
 import scala.io.Source
 val listOfLines = Source.fromFile("/Users/ahughes/pairing/Resources/scrabble-letters.txt").getLines.toList
+def getTileTypes(line: String): Tile = {
+  val Array(tile, count, value) = line.split("\t")
+  Tile(tile, value.toInt)
+}
+
+val tiles = listOfLines.map(getTileTypes(_))
 
 
 
