@@ -21,10 +21,18 @@ object LetterBag {
     val Array(tile, count, value) = line.split("\t")
     (Tile(tile, value.toInt), count.toInt)
   }
-  def apply: List[Tile] ={
+  def apply: List[Tile] = {
     listOfLines.map(getTilesWithCount(_)).flatMap(x => List.fill(x._2)(x._1))
   }
+}
 
+val validWords: List[String] = "cat" :: "dog" :: Nil
+
+def findWord(rack: List[Tile]): String = {
+  val tileLetters = rack.flatMap(_.letter.toUpperCase.toCharArray)
+  val wordLetters = validWords.map(_.toList)
+
+  ???
 }
 
 def wordScore(word: Word) = {
@@ -38,6 +46,13 @@ val tile2 = Tile("b", 2)
 
 val score = wordScore(Seq(tile1, tile2))
 val rack = Rack.apply
+
+// Use "model" data structures to begin with before replacing with real
+// Handy things to do with lists: List.range(x,y), list_name(index) for element,
+// el :: Nil to create new list, list_name.sum, list_name.fold(identity)(function)
+// Generating random numbers: scala.util.Random, nextInt(n: Int)
+// named tuples good for readability
+
 
 //import org.scalatest.{FlatSpec, Matchers}
 //
