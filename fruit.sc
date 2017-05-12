@@ -67,9 +67,12 @@ Game.apply(player, machine)
 
 
 
-
 // When returning an instance of a type, it's called
 // a factory method. Put factory methods in a companion
 // object. This, by definition, has the same name as
 // the type that it is creating
+// case class TypeName(parameter: Type)
+// object TypeName {
+//   def apply : Type  = {???}
+// }
 
